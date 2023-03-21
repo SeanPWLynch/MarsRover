@@ -54,35 +54,60 @@ namespace MarsRover
         {
             if (this.Position.Direction == Direction.North)
             {
-                if (!(Position.X + 1 > platue.Height))
+                if (!(Position.Y + 1 > platue.Height))
                 {
-                    Position.X += 1;
+                    Position.Y += 1;
+                }
+                else
+                {
+                    ImSorryDave();
                 }
             }
             else if (this.Position.Direction == Direction.East)
             {
-                if (!(Position.Y + 1 > platue.Width))
+                if (!(Position.X + 1 > platue.Width))
                 {
-                    Position.Y += 1;
+                    Position.X += 1;
                 }
+                else
+                {
+                    ImSorryDave();
+                }
+
             }
             else if (this.Position.Direction == Direction.South)
-            {
-                if (!(Position.X - 1 < 1))
-                {
-                    Position.X -= 1;
-                }
-            }
-            else if (this.Position.Direction == Direction.West)
             {
                 if (!(Position.Y - 1 < 1))
                 {
                     Position.Y -= 1;
                 }
+                else
+                {
+                    ImSorryDave();
+                }
+
+            }
+            else if (this.Position.Direction == Direction.West)
+            {
+                if (!(Position.X - 1 < 1))
+                {
+                    Position.X -= 1;
+                }
+                else
+                {
+                    ImSorryDave();
+                }
             }
 
 
         }
+
+        public void ImSorryDave()
+        {
+            Console.Write($"I'm sorry, Dave. I'm afraid I can't do that. I would fall from the {Position.Direction} Face");
+
+        }
+
 
 
     }
