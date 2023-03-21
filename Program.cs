@@ -18,6 +18,8 @@ class Program
             "Go ahead, take those controls and show the galaxy what you're made of! And if all else fails, don't panic - just remember, the answer is always 42.  \n " +
             "Happy exploring! \n");
 
+        Console.ReadLine();
+
         Console.WriteLine("Now hold on just a moment there, space cadet. \n" +
             " We can't just hand over the controls of a real-life Mars Rover to just anyone! We've got a reputation to uphold, you know. \n " +
             "But fear not, we've got the next best thing - a simulator! That's right, you'll be able to experience all the thrills and spills of controlling a Mars Rover, without the risk of accidentally sending it careening off a cliff. \n" +
@@ -41,7 +43,7 @@ class Program
 
         Rover rover = new Rover();
 
-        foreach (char movement in commandInput.ToCharArray())
+        foreach (char movement in commandInput.ToUpper().ToCharArray())
         {
             rover.Move(platue, movement);
         }
