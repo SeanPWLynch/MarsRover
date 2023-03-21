@@ -9,8 +9,8 @@ namespace MarsRover
     public enum Direction : int
     {
         North = 1,
-        South = 2,
-        East = 3,
+        East = 2,
+        South = 3,
         West = 4
     }
 }
