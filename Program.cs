@@ -18,7 +18,7 @@ class Program
             "Go ahead, take those controls and show the galaxy what you're made of! And if all else fails, don't panic - just remember, the answer is always 42.  \n" +
             "Happy exploring! \n");
 
-        Console.WriteLine("Please enter your grid size now \n");
+        Console.WriteLine("Please enter your commands now \n");
         Console.ReadKey();
 
         Console.WriteLine("Now hold on just a moment there, space cadet. \n" +
@@ -29,7 +29,7 @@ class Program
         Console.WriteLine("Alrighty then, space explorer. Before we can launch you into the exciting world of Mars Rover simulation, we need to set up the game board, so to speak. \n" +
             "And that means choosing the size of the grid you'll be operating on. So go ahead and type in the size you want - for example, 5x5 or 10x10. Just remember, the bigger the grid, the bigger the challenge (and the bigger the fun, of course!). So choose wisely, and get ready for a virtual adventure like no other! \n");
 
-        Console.WriteLine("Please enter your commands now \n");
+        Console.WriteLine("Please enter your grid size now \n");
 
         string platueSize = Console.ReadLine();
 
@@ -42,7 +42,10 @@ class Program
 
         Console.WriteLine("Attention, space explorer! The simulator is up and running, and the Mars Rover is ready for your command. So without further ado, let's get this show on the road, enter your directional commands now and start exploring!\n");
 
-        string commandInput=Console.ReadLine();
+        Console.WriteLine("Please enter your commands now \n");
+
+
+        string commandInput =Console.ReadLine();
 
         Rover rover = new Rover();
 
