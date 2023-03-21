@@ -58,20 +58,12 @@ namespace MarsRover
                 {
                     Position.Y += 1;
                 }
-                else
-                {
-                    ImSorryDave();
-                }
             }
             else if (this.Position.Direction == Direction.East)
             {
                 if (!(Position.X + 1 > platue.Width))
                 {
                     Position.X += 1;
-                }
-                else
-                {
-                    ImSorryDave();
                 }
 
             }
@@ -81,10 +73,6 @@ namespace MarsRover
                 {
                     Position.Y -= 1;
                 }
-                else
-                {
-                    ImSorryDave();
-                }
 
             }
             else if (this.Position.Direction == Direction.West)
@@ -93,18 +81,8 @@ namespace MarsRover
                 {
                     Position.X -= 1;
                 }
-                else
-                {
-                    ImSorryDave();
-                }
             }
 
-
-        }
-
-        public void ImSorryDave()
-        {
-            Console.Write($"I'm sorry, Dave. I'm afraid I can't do that. I would fall from the {Position.Direction} Face");
 
         }
 
