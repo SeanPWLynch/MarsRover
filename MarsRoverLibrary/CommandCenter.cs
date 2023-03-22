@@ -9,18 +9,19 @@ namespace MarsRoverLibrary
 {
     public class CommandCenter : ICommandCenter
     {
-        public CommandCenter(CommandParser commandParser, Platue platue, Rover rover)
-        {
-            _commandParser = commandParser;
-            _platue = platue;
-            _rover = rover;
-        }
 
         private ICommandParser _commandParser { get; set; }
 
         private IPlatue _platue { get; set; }
 
         private IRover _rover { get; set; }
+
+        public CommandCenter(CommandParser commandParser, Platue platue, Rover rover)
+        {
+            _commandParser = commandParser;
+            _platue = platue;
+            _rover = rover;
+        }
 
         public static CommandCenter Create(string platueSize)
         {

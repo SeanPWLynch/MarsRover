@@ -1,12 +1,18 @@
 ﻿using MarsRoverLibrary;
 using System.Numerics;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace MarsRover;
 class Program
 {
-    public static ICommandCenter commandCenter;
-    static void Main(string[] args)
+    static void Main(string[] args) 
     {
+        var host = CreateHostBuilder(args).Build();
+
+
         Console.WriteLine("Welcome to NASA, the space agency that's so hip, it's practically orbiting itself! \n" +
             "We've got rockets that go faster than a caffeinated cheetah, and scientists who are smarter than the average supercomputer (with better senses of humor too, if we do say so ourselves).  \n" +
             "So strap on your space helmet, take a deep breath, and get ready for the ride of your life - because at NASA, the galaxy is our playground and the stars are our swing set! \n");
@@ -40,7 +46,7 @@ class Program
 
         Console.WriteLine("Please enter your grid size now \n");
 
-        //Parse User Input Until Valid Platue Size
+        var commandCenter = host.Services.GetService<CommandCenter>();
 
         do
         {
@@ -89,6 +95,16 @@ class Program
 
     }
 
+
+    public static IHostBuilder CreateHostBuilder(string[] args)
+    {
+        return Host.CreateDefaultBuilder(args)
+            .ConfigureServices(services =>
+            {
+                services.AddTransient<Program>();
+                services.AddTransient<ICommandCenter, CommandCenter>();
+            });
+    }
 
 }
 
