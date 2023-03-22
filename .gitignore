@@ -5,3 +5,7 @@
 /.vs/MarsRover
 /MarsRoverTests/obj
 /MarsRoverTests/bin/Debug/net6.0
+/.vs
+/obj
+/MarsRoverLibrary/bin/Debug/net6.0
+/MarsRoverLibrary/obj
