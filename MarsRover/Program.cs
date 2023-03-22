@@ -27,6 +27,8 @@ class Program
         Console.WriteLine("Please enter your commands now \n");
 
         Console.ReadKey();
+        Console.WriteLine("\n");
+
 
         Console.WriteLine("Now hold on just a moment there, space cadet. \n" +
             "We can't just hand over the controls of a real-life Mars Rover to just anyone! We've got a reputation to uphold, you know. \n" +
@@ -65,12 +67,13 @@ class Program
             $"You're a natural at this! But don't rest on your laurels just yet - there's still plenty of exploring to do out there in the great beyond. So keep on truckin', and let's see where your intrepid spirit takes you next!\n");
 
 
-        Console.WriteLine("To exit the simulator type EXIT, or keep entering commands to drive the rover");
+        Console.WriteLine("To exit the simulator type EXIT, or keep entering commands to drive the rover\n");
 
         bool simulatorOn = true;
         do
         {
             string input = Console.ReadLine();
+
             if (input.Equals("EXIT"))
             {
                 simulatorOn = false;
