@@ -19,7 +19,7 @@ namespace MarsRoverLibrary
             Position = Position.Create();
         }
 
-        public void Move(Platue platue, char[] movements)
+        public void Move(IPlatue platue, char[] movements)
         {
             foreach (char movement in movements)
             {
@@ -57,7 +57,7 @@ namespace MarsRoverLibrary
             }
         }
 
-        public void CheckEdgeAndMove(Platue platue)
+        public void CheckEdgeAndMove(IPlatue platue)
         {
             if (this.Position.Direction == Direction.North)
             {

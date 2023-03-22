@@ -4,6 +4,7 @@ using System.Numerics;
 namespace MarsRover;
 class Program
 {
+    public static ICommandCenter commandCenter;
     static void Main(string[] args)
     {
         Console.WriteLine("Welcome to NASA, the space agency that's so hip, it's practically orbiting itself! \n" +
@@ -37,51 +38,51 @@ class Program
 
         Console.WriteLine("Please enter your grid size now \n");
 
-        //Parse User Input Until Valid Platur Size
+        //Parse User Input Until Valid Platue Size
 
-        CommandParser commandParser = CommandParser.Create();
-        bool validPlatueCreated = false;
-        int[] heightWidth = { };
         do
         {
-          heightWidth = commandParser.ParsePlatueSize(Console.ReadLine());
-          if(heightWidth != null)
-            {
-                validPlatueCreated=true;
-            }
+          commandCenter = CommandCenter.Create(Console.ReadLine());
 
-        } while (validPlatueCreated is false);
+        } while (commandCenter is null);
 
 
-        Platue platue = new Platue(heightWidth[0], heightWidth[1]);
-
-
-        Console.WriteLine("Attention, space explorer! The simulator is up and running, and the Mars Rover is ready for your command. So without further ado, let's get this show on the road, enter your directional commands now and start exploring!\n");
+        Console.WriteLine("Attention, space explorer! The simulator command center is up and running, and the Mars Rover is ready for your command. So without further ado, let's get this show on the road, enter your directional commands now and start exploring!\n");
 
         Console.WriteLine("Please enter your commands now \n");
 
 
-        char[] movements = { };
         bool validCommandsRecieved = false;
         do
         {
-            movements = commandParser.ParseRoverCommand(Console.ReadLine());
-            if (movements != null)
-            {
-                validCommandsRecieved = true;
-            }
+            validCommandsRecieved = commandCenter.ValidateAndExecuteCommand(Console.ReadLine());
 
         } while (validCommandsRecieved is false);
-
-
-        Rover rover = Rover.Create();
-        rover.Move(platue, movements);
         
 
         Console.WriteLine($"Excellent work, space explorer! You've successfully navigated the Mars Rover through the treacherous terrain of the simulation grid, and have reached your destination. \n" +
-            $"And just in case you were wondering, your current coordinates are {rover.Position.X},{rover.Position.Y} and your direction is {rover.Position.Direction}.  \n" +
+            $"And just in case you were wondering, your current coordinates are {commandCenter.GetRoverPositionX()},{commandCenter.GetRoverPositionY()} and your direction is {commandCenter.GetRoverPositionDirection()}.  \n" +
             $"You're a natural at this! But don't rest on your laurels just yet - there's still plenty of exploring to do out there in the great beyond. So keep on truckin', and let's see where your intrepid spirit takes you next!\n");
 
+
+        Console.WriteLine("To exit the simulator type EXIT, or keep entering commands to drive the rover");
+
+        bool simulatorOn = true;
+        do
+        {
+            string input = Console.ReadLine();
+            if (input.Equals("EXIT"))
+            {
+                simulatorOn = false;
+            }
+            else
+            {
+                commandCenter.ValidateAndExecuteCommand(input);
+                Console.WriteLine($"Current Position Is {commandCenter.GetRoverPositionX()}, {commandCenter.GetRoverPositionY()},{commandCenter.GetRoverPositionDirection()}");
+            }
+            
+
+        } while (simulatorOn is true);
 
     }
 

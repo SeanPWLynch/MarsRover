@@ -18,7 +18,7 @@ namespace MarsRoverTests
         public void RoverCreated()
         {
 
-            Rover rover = Rover.Create();
+            IRover rover = Rover.Create();
 
             Assert.Multiple(() =>
             {
@@ -32,7 +32,7 @@ namespace MarsRoverTests
         [Test]
         public void RoverTurnRight()
         {
-            Rover rover = Rover.Create();
+            IRover rover = Rover.Create();
 
             rover.Move(Platue,new char[] { 'R' });
 
@@ -46,7 +46,7 @@ namespace MarsRoverTests
         [TestCase("RRRRR", Direction.East)]
         public void RoverTurnRightMultiple(string input, Direction directionActual)
         {
-            Rover rover = Rover.Create();
+            IRover rover = Rover.Create();
 
             rover.Move(Platue, input.ToCharArray());
 
@@ -57,7 +57,7 @@ namespace MarsRoverTests
         [Test]
         public void RoverTurnLeft()
         {
-            Rover rover = Rover.Create();
+            IRover rover = Rover.Create();
 
             rover.Move(Platue, new char[] { 'L' });
 
@@ -71,7 +71,7 @@ namespace MarsRoverTests
         [TestCase("LLLLL", Direction.West)]
         public void RoverTurnLeftMultiple(string input, Direction directionActual)
         {
-            Rover rover = new Rover();
+            IRover rover = new Rover();
 
             rover.Move(Platue, input.ToCharArray());
 
@@ -82,7 +82,7 @@ namespace MarsRoverTests
         [Test]
         public void RoverMoveForward()
         {
-            Rover rover = Rover.Create();
+            IRover rover = Rover.Create();
 
             rover.Move(Platue, new char[] { 'F' });
 
@@ -102,7 +102,7 @@ namespace MarsRoverTests
         [TestCase("FFFFFF", 5)]
         public void RoverMoveForwardMultiple(string input, int heightActual)
         {
-            Rover rover = Rover.Create();
+            IRover rover = Rover.Create();
 
 
             rover.Move(Platue, input.ToCharArray());
@@ -118,7 +118,7 @@ namespace MarsRoverTests
         [Test]
         public void RoverTurnAroundAndGoForward()
         {
-            Rover rover = Rover.Create();
+            IRover rover = Rover.Create();
 
             rover.Move(Platue, new char[] { 'R' });
             rover.Move(Platue, new char[] { 'R' });
@@ -135,7 +135,7 @@ namespace MarsRoverTests
         [Test]
         public void RoverTurnRightAndGoForward()
         {
-            Rover rover = Rover.Create();
+            IRover rover = Rover.Create();
 
             rover.Move(Platue, new char[] { 'R' });
             rover.Move(Platue, new char[] { 'F' });
@@ -152,7 +152,7 @@ namespace MarsRoverTests
         [Test]
         public void RoverForwardTwiceRightTwiceForwardTwice()
         {
-            Rover rover = Rover.Create();
+            IRover rover = Rover.Create();
 
             rover.Move(Platue, new char[] { 'F' });
             rover.Move(Platue, new char[] { 'F' });
@@ -178,7 +178,7 @@ namespace MarsRoverTests
         [TestCase("RFFFFFF", 1, 5, Direction.East)]
         public void RoverTurnRightAndGoForwardMultiple(string input, int heightActual, int widthActual, Direction directionActual)
         {
-            Rover rover = Rover.Create();
+            IRover rover = Rover.Create();
 
 
                 rover.Move(Platue, input.ToCharArray());
@@ -196,7 +196,7 @@ namespace MarsRoverTests
         [Test]
         public void RoverTurnLeftAndGoForward()
         {
-            Rover rover = Rover.Create();
+            IRover rover = Rover.Create();
 
             rover.Move(Platue, new char[] { 'L' });
             rover.Move(Platue, new char[] { 'F' });
@@ -213,7 +213,7 @@ namespace MarsRoverTests
         [Test]
         public void RoverTurnRightAndGoForwardTurnLeftAndGoForward()
         {
-            Rover rover = Rover.Create();
+            IRover rover = Rover.Create();
 
             rover.Move(Platue, new char[] { 'R' });
             rover.Move(Platue, new char[] { 'F' });
@@ -232,7 +232,7 @@ namespace MarsRoverTests
         [Test]
         public void RoverInvalidCommand()
         {
-            Rover rover = Rover.Create();
+            IRover rover = Rover.Create();
 
             rover.Move(Platue, new char[] { 'X' });
 
@@ -248,7 +248,7 @@ namespace MarsRoverTests
         [Test]
         public void RoverOperationalTest()
         {
-            Rover rover = Rover.Create();
+            IRover rover = Rover.Create();
 
             string input = "FFRFLFLF";
 

@@ -16,7 +16,7 @@ namespace MarsRoverTests
         [Test]
         public void ParsePlatueException()
         {
-            CommandParser commandParser = CommandParser.Create();
+            ICommandParser commandParser = CommandParser.Create();
             
             var platueSize = commandParser.ParsePlatueSize(null);
 
@@ -29,7 +29,7 @@ namespace MarsRoverTests
         [Test]
         public void ParsePlatuePass()
         {
-            CommandParser commandParser = CommandParser.Create();
+            ICommandParser commandParser = CommandParser.Create();
 
             var platueSize = commandParser.ParsePlatueSize("5x5");
 
@@ -45,7 +45,7 @@ namespace MarsRoverTests
         [Test]
         public void ParsePlatueReturnNull()
         {
-            CommandParser commandParser = CommandParser.Create();
+            ICommandParser commandParser = CommandParser.Create();
 
             var platueSize = commandParser.ParsePlatueSize("5T5");
 
@@ -60,7 +60,7 @@ namespace MarsRoverTests
         [Test]
         public void ParsePlatueTooManyChar()
         {
-            CommandParser commandParser = CommandParser.Create();
+            ICommandParser commandParser = CommandParser.Create();
 
             var platueSize = commandParser.ParsePlatueSize("5X5X5");
 
@@ -74,7 +74,7 @@ namespace MarsRoverTests
         [Test]
         public void ParseRoverCommand()
         {
-            CommandParser commandParser = CommandParser.Create();
+            ICommandParser commandParser = CommandParser.Create();
 
             var roverCommands = commandParser.ParseRoverCommand("FFL");
 
@@ -90,7 +90,7 @@ namespace MarsRoverTests
         [Test]
         public void ParseRoverCommandReturnNull()
         {
-            CommandParser commandParser = CommandParser.Create();
+            ICommandParser commandParser = CommandParser.Create();
 
             var roverCommands = commandParser.ParseRoverCommand("FFA");
 
@@ -104,7 +104,7 @@ namespace MarsRoverTests
         [Test]
         public void ParseRoverCommandException()
         {
-            CommandParser commandParser = CommandParser.Create();
+            ICommandParser commandParser = CommandParser.Create();
 
             var roverCommands = commandParser.ParseRoverCommand(null);
 

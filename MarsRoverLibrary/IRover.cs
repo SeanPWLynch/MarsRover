@@ -3,7 +3,7 @@
     public interface IRover
     {
         Position Position { get; set; }
-        void CheckEdgeAndMove(Platue platue);
-        void Move(Platue platue, char[] movements);
+        void CheckEdgeAndMove(IPlatue platue);
+        void Move(IPlatue platue, char[] movements);
     }
 }
