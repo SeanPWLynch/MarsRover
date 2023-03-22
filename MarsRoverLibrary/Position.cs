@@ -17,5 +17,10 @@ namespace MarsRoverLibrary
 
         }
 
+        public static Position Create()
+        {
+            return new Position();
+        }
+
     }
 }

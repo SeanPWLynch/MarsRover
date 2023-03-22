@@ -14,10 +14,23 @@ namespace MarsRoverTests
 
 
         [Test]
-        public void ParsePlatuePass()
+        public void ParsePlatueException()
         {
             CommandParser commandParser = CommandParser.Create();
             
+            var platueSize = commandParser.ParsePlatueSize(null);
+
+            Assert.Multiple(() =>
+            {
+                Assert.IsNull(platueSize);
+            });
+        }
+
+        [Test]
+        public void ParsePlatuePass()
+        {
+            CommandParser commandParser = CommandParser.Create();
+
             var platueSize = commandParser.ParsePlatueSize("5x5");
 
             Platue platue = Platue.Create(platueSize[0], platueSize[1]);
@@ -27,7 +40,6 @@ namespace MarsRoverTests
                 Assert.AreEqual(platue.Height, 5);
                 Assert.AreEqual(platue.Width, 5);
             });
-
         }
 
         [Test]
@@ -89,5 +101,18 @@ namespace MarsRoverTests
 
         }
 
+        [Test]
+        public void ParseRoverCommandException()
+        {
+            CommandParser commandParser = CommandParser.Create();
+
+            var roverCommands = commandParser.ParseRoverCommand(null);
+
+            Assert.Multiple(() =>
+            {
+                Assert.IsNull(roverCommands);
+            });
+
+        }
     }
 }

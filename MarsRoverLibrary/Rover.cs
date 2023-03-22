@@ -9,13 +9,14 @@ namespace MarsRoverLibrary
     public class Rover : IRover
     {
 
+        public Position Position { get; set; }
+
         public static Rover Create() { return new Rover(); }
 
-        public Position Position { get; set; } = new Position();
 
         public Rover()
         {
-
+            Position = Position.Create();
         }
 
         public void Move(Platue platue, char[] movements)

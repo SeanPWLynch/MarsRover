@@ -149,6 +149,27 @@ namespace MarsRoverTests
             });
         }
 
+        [Test]
+        public void RoverForwardTwiceRightTwiceForwardTwice()
+        {
+            Rover rover = Rover.Create();
+
+            rover.Move(Platue, new char[] { 'F' });
+            rover.Move(Platue, new char[] { 'F' });
+            rover.Move(Platue, new char[] { 'R' });
+            rover.Move(Platue, new char[] { 'R' });
+            rover.Move(Platue, new char[] { 'F' });
+            rover.Move(Platue, new char[] { 'F' });
+
+
+            Assert.Multiple(() =>
+            {
+                Assert.IsTrue(rover.Position.Direction == Direction.South);
+                Assert.IsTrue(rover.Position.Y == 1);
+                Assert.IsTrue(rover.Position.X == 1);
+            });
+        }
+
         [TestCase("R", 1,1, Direction.East)]
         [TestCase("RF", 1,2, Direction.East)]
         [TestCase("RFF", 1, 3, Direction.East)]
@@ -207,6 +228,22 @@ namespace MarsRoverTests
                 Assert.IsTrue(rover.Position.Y == 2);
             });
         }
+
+        [Test]
+        public void RoverInvalidCommand()
+        {
+            Rover rover = Rover.Create();
+
+            rover.Move(Platue, new char[] { 'X' });
+
+            Assert.Multiple(() =>
+            {
+                Assert.IsTrue(rover.Position.Direction == Direction.North);
+                Assert.IsTrue(rover.Position.X == 1);
+                Assert.IsTrue(rover.Position.Y == 1);
+            });
+        }
+
 
         [Test]
         public void RoverOperationalTest()
