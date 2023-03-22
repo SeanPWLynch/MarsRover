@@ -7,18 +7,21 @@ class Program
             "We've got rockets that go faster than a caffeinated cheetah, and scientists who are smarter than the average supercomputer (with better senses of humor too, if we do say so ourselves).  \n" +
             "So strap on your space helmet, take a deep breath, and get ready for the ride of your life - because at NASA, the galaxy is our playground and the stars are our swing set! \n");
 
+        Console.WriteLine("Hey you! Yes, you! Are you ready to take on the challenge of controlling a Mars Rover? \n" +
+    "It's as easy as pie, or at least as easy as it is for a supercomputer with a brain the size of a small planet. So why not give it a go? \n" +
+    "Go ahead, take those controls and show the galaxy what you're made of! And if all else fails, don't panic - just remember, the answer is always 42.  \n" +
+    "Happy exploring! \n");
+
         Console.WriteLine("Ah, the controls for the Mars Rover.As easy as pie for those of us with brains the size of small planets.Here goes: \n" +
             "L\" is for \"Left\", as in turn the robot to the left. \n" +
             "R\" is for \"Right\", as in turn the robot to the right. \n" +
             "And \"F\" is for \"Forward\", as in move the robot in the direction it's facing. \n" +
             "It's all quite simple really, unless of course you're a Vogon with a penchant for poetry, in which case we recommend getting a Babelfish to translate this for you. Good luck out there, space explorer! \n");
 
-        Console.WriteLine("Hey you! Yes, you! Are you ready to take on the challenge of controlling a Mars Rover? \n" +
-            "It's as easy as pie, or at least as easy as it is for a supercomputer with a brain the size of a small planet. So why not give it a go? \n" +
-            "Go ahead, take those controls and show the galaxy what you're made of! And if all else fails, don't panic - just remember, the answer is always 42.  \n" +
-            "Happy exploring! \n");
+
 
         Console.WriteLine("Please enter your commands now \n");
+
         Console.ReadKey();
 
         Console.WriteLine("Now hold on just a moment there, space cadet. \n" +
@@ -45,7 +48,7 @@ class Program
         Console.WriteLine("Please enter your commands now \n");
 
 
-        string commandInput =Console.ReadLine();
+        string commandInput = Console.ReadLine();
 
         Rover rover = new Rover();
 
