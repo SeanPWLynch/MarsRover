@@ -1,4 +1,4 @@
-using MarsRover;
+using MarsRoverLibrary;
 using NUnit.Framework;
 
 namespace MarsRoverTests
@@ -19,7 +19,7 @@ namespace MarsRoverTests
             int height = 5;
             int width = 5;
 
-            Platue platue = new Platue(height,width);
+            Platue platue = Platue.Create(height,width);
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(platue.Height, height);
@@ -38,7 +38,7 @@ namespace MarsRoverTests
             int height = int.Parse(heightWidth[0]);
             int width = int.Parse(heightWidth[1]);
 
-            Platue platue = new Platue(height, width);
+            Platue platue = Platue.Create(height, width);
 
             Assert.Multiple(() =>
             {

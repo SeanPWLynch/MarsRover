@@ -1,4 +1,4 @@
-using MarsRover;
+using MarsRoverLibrary;
 using NUnit.Framework;
 
 namespace MarsRoverTests
@@ -11,14 +11,14 @@ namespace MarsRoverTests
         [SetUp]
         public  void SetUp()
         {
-            Platue = new Platue(5, 5);
+            Platue = Platue.Create(5, 5);
         }
 
         [Test]
         public void RoverCreated()
         {
 
-           Rover rover = new Rover();
+            Rover rover = Rover.Create();
 
             Assert.Multiple(() =>
             {
@@ -32,9 +32,9 @@ namespace MarsRoverTests
         [Test]
         public void RoverTurnRight()
         {
-            Rover rover = new Rover();
+            Rover rover = Rover.Create();
 
-            rover.Move(Platue,'R');
+            rover.Move(Platue,new char[] { 'R' });
 
             Assert.IsTrue(rover.Position.Direction == Direction.East);
         }
@@ -46,13 +46,9 @@ namespace MarsRoverTests
         [TestCase("RRRRR", Direction.East)]
         public void RoverTurnRightMultiple(string input, Direction directionActual)
         {
-            Rover rover = new Rover();
+            Rover rover = Rover.Create();
 
-            foreach (char movement in input.ToCharArray())
-            {
-                rover.Move(Platue,movement);
-
-            }
+            rover.Move(Platue, input.ToCharArray());
 
 
             Assert.IsTrue(rover.Position.Direction == directionActual);
@@ -61,9 +57,9 @@ namespace MarsRoverTests
         [Test]
         public void RoverTurnLeft()
         {
-            Rover rover = new Rover();
+            Rover rover = Rover.Create();
 
-            rover.Move(Platue, 'L');
+            rover.Move(Platue, new char[] { 'L' });
 
             Assert.IsTrue(rover.Position.Direction == Direction.West);
         }
@@ -77,11 +73,7 @@ namespace MarsRoverTests
         {
             Rover rover = new Rover();
 
-            foreach (char movement in input.ToCharArray())
-            {
-                rover.Move(Platue, movement);
-
-            }
+            rover.Move(Platue, input.ToCharArray());
 
 
             Assert.IsTrue(rover.Position.Direction == directionActual);
@@ -90,9 +82,9 @@ namespace MarsRoverTests
         [Test]
         public void RoverMoveForward()
         {
-            Rover rover = new Rover();
+            Rover rover = Rover.Create();
 
-            rover.Move(Platue,'F');
+            rover.Move(Platue, new char[] { 'F' });
 
             Assert.Multiple(() =>
             {
@@ -110,12 +102,11 @@ namespace MarsRoverTests
         [TestCase("FFFFFF", 5)]
         public void RoverMoveForwardMultiple(string input, int heightActual)
         {
-            Rover rover = new Rover();
+            Rover rover = Rover.Create();
 
-            foreach (char movement in input.ToCharArray())
-            {
-                rover.Move(Platue, movement);
-            }
+
+            rover.Move(Platue, input.ToCharArray());
+            
 
             Assert.Multiple(() =>
             {
@@ -127,12 +118,12 @@ namespace MarsRoverTests
         [Test]
         public void RoverTurnAroundAndGoForward()
         {
-            Rover rover = new Rover();
+            Rover rover = Rover.Create();
 
-            rover.Move(Platue, 'R');
-            rover.Move(Platue, 'R');
-            rover.Move(Platue, 'F');
-            
+            rover.Move(Platue, new char[] { 'R' });
+            rover.Move(Platue, new char[] { 'R' });
+            rover.Move(Platue, new char[] { 'F' });
+
 
             Assert.Multiple(() =>
             {
@@ -144,10 +135,10 @@ namespace MarsRoverTests
         [Test]
         public void RoverTurnRightAndGoForward()
         {
-            Rover rover = new Rover();
+            Rover rover = Rover.Create();
 
-            rover.Move(Platue, 'R');
-            rover.Move(Platue, 'F');
+            rover.Move(Platue, new char[] { 'R' });
+            rover.Move(Platue, new char[] { 'F' });
 
 
             Assert.Multiple(() =>
@@ -166,12 +157,11 @@ namespace MarsRoverTests
         [TestCase("RFFFFFF", 1, 5, Direction.East)]
         public void RoverTurnRightAndGoForwardMultiple(string input, int heightActual, int widthActual, Direction directionActual)
         {
-            Rover rover = new Rover();
+            Rover rover = Rover.Create();
 
-            foreach (char movement in input.ToCharArray())
-            {
-                rover.Move(Platue, movement);
-            }
+
+                rover.Move(Platue, input.ToCharArray());
+            
 
 
             Assert.Multiple(() =>
@@ -185,10 +175,10 @@ namespace MarsRoverTests
         [Test]
         public void RoverTurnLeftAndGoForward()
         {
-            Rover rover = new Rover();
+            Rover rover = Rover.Create();
 
-            rover.Move(Platue, 'L');
-            rover.Move(Platue, 'F');
+            rover.Move(Platue, new char[] { 'L' });
+            rover.Move(Platue, new char[] { 'F' });
 
 
             Assert.Multiple(() =>
@@ -202,12 +192,12 @@ namespace MarsRoverTests
         [Test]
         public void RoverTurnRightAndGoForwardTurnLeftAndGoForward()
         {
-            Rover rover = new Rover();
+            Rover rover = Rover.Create();
 
-            rover.Move(Platue, 'R');
-            rover.Move(Platue, 'F');
-            rover.Move(Platue, 'L');
-            rover.Move(Platue, 'F');
+            rover.Move(Platue, new char[] { 'R' });
+            rover.Move(Platue, new char[] { 'F' });
+            rover.Move(Platue, new char[] { 'L' });
+            rover.Move(Platue, new char[] { 'F' });
 
 
             Assert.Multiple(() =>
@@ -221,14 +211,13 @@ namespace MarsRoverTests
         [Test]
         public void RoverOperationalTest()
         {
-            Rover rover = new Rover();
+            Rover rover = Rover.Create();
 
             string input = "FFRFLFLF";
 
-            foreach (char movement in input.ToCharArray())
-            {
-                rover.Move(Platue, movement);
-            }
+
+           rover.Move(Platue, input.ToCharArray());
+            
 
             Assert.Multiple(() =>
             {

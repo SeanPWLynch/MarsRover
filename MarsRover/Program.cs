@@ -1,4 +1,7 @@
-﻿namespace MarsRover;
+﻿using MarsRoverLibrary;
+using System.Numerics;
+
+namespace MarsRover;
 class Program
 {
     static void Main(string[] args)
@@ -34,28 +37,46 @@ class Program
 
         Console.WriteLine("Please enter your grid size now \n");
 
-        string platueSize = Console.ReadLine();
+        //Parse User Input Until Valid Platur Size
 
-        var heightWidth = platueSize.ToLower().Split("x");
+        CommandParser commandParser = CommandParser.Create();
+        bool validPlatueCreated = false;
+        int[] heightWidth = { };
+        do
+        {
+          heightWidth = commandParser.ParsePlatueSize(Console.ReadLine());
+          if(heightWidth != null)
+            {
+                validPlatueCreated=true;
+            }
 
-        int height = int.Parse(heightWidth[0]);
-        int width = int.Parse(heightWidth[1]);
+        } while (validPlatueCreated is false);
 
-        Platue platue = new Platue(height, width);
+
+        Platue platue = new Platue(heightWidth[0], heightWidth[1]);
+
 
         Console.WriteLine("Attention, space explorer! The simulator is up and running, and the Mars Rover is ready for your command. So without further ado, let's get this show on the road, enter your directional commands now and start exploring!\n");
 
         Console.WriteLine("Please enter your commands now \n");
 
 
-        string commandInput = Console.ReadLine();
-
-        Rover rover = new Rover();
-
-        foreach (char movement in commandInput.ToUpper().ToCharArray())
+        char[] movements = { };
+        bool validCommandsRecieved = false;
+        do
         {
-            rover.Move(platue, movement);
-        }
+            movements = commandParser.ParseRoverCommand(Console.ReadLine());
+            if (movements != null)
+            {
+                validCommandsRecieved = true;
+            }
+
+        } while (validCommandsRecieved is false);
+
+
+        Rover rover = Rover.Create();
+        rover.Move(platue, movements);
+        
 
         Console.WriteLine($"Excellent work, space explorer! You've successfully navigated the Mars Rover through the treacherous terrain of the simulation grid, and have reached your destination. \n" +
             $"And just in case you were wondering, your current coordinates are {rover.Position.X},{rover.Position.Y} and your direction is {rover.Position.Direction}.  \n" +

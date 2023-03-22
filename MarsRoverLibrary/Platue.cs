@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MarsRover
+namespace MarsRoverLibrary
 {
-    public class Platue
+    public class Platue : IPlatue
     {
         public int Height { get; set; }
         public int Width { get; set; }
@@ -15,6 +15,11 @@ namespace MarsRover
         {
             Height = height;
             Width = width;
+        }
+
+        public static Platue Create(int height, int width)
+        {
+            return new Platue(height, width);
         }
     }
 }
