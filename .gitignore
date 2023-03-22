@@ -3,3 +3,5 @@
 ################################################################################
 
 /.vs/MarsRover
+/MarsRoverTests/obj
+/MarsRoverTests/bin/Debug/net6.0
