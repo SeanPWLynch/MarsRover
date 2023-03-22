@@ -32,7 +32,20 @@ namespace MarsRoverTests
         }
 
         [Test]
-        public void TestMovement()
+        public void CreateCommandCenterInvalidInput()
+        {
+            string platueSize = "5x5x5";
+
+            ICommandCenter commandCenter = CommandCenter.Create(platueSize);
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(commandCenter, null);
+            });
+        }
+
+        [Test]
+        public void TestCommands()
         {
             string platueSize = "5x5";
             
@@ -49,6 +62,23 @@ namespace MarsRoverTests
                 Assert.AreEqual(commandCenter.GetRoverPositionX(), 1);
                 Assert.AreEqual(commandCenter.GetRoverPositionY(), 4);
                 Assert.AreEqual(commandCenter.GetRoverPositionDirection(), Direction.West);
+            });
+        }
+
+        [Test]
+        public void TestCommandsInvalidInput()
+        {
+            string platueSize = "5x5";
+
+            ICommandCenter commandCenter = CommandCenter.Create(platueSize);
+
+            string command = "FFRFLFALF";
+
+            bool validCommand = commandCenter.ValidateAndExecuteCommand(command);
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(validCommand, false);
             });
         }
 

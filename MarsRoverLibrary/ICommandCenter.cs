@@ -8,9 +8,9 @@ namespace MarsRoverLibrary
 {
     public interface ICommandCenter
     {
-        private static ICommandParser _commandParser { get; set; }
-        private static IPlatue _platue { get; set; }
-        private static IPlatue _rover { get; set; }
+        private static ICommandParser _commandParser;
+        private static IPlatue _platue;
+        private static IPlatue _rover;
         bool ValidateAndExecuteCommand(string input);
 
         int GetRoverPositionX();
